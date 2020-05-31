@@ -45,47 +45,18 @@ def valid_move?(board, index)
 
 end
 
-=begin
-def turn(board)
-  run = "Y"
-  while run == "Y" do
-    puts "Please enter 1-9:"
-    user_input = gets.strip.to_i
-    if user_input >= 1 && user_input <= 9
-      index = input_to_index(user_input)
-      if valid_move?(board, index)
-        input = "X"
-        move(board, index, input)
-        display_board(board)
-        puts board
-      else
-        run = "Y"
-      end
-      run = "N"
-    else
-      run = "Y"
-    end
-  end
-end
-=end
-#=begin
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-  if valid_move?(board, index) && index % 2 == 0
-    character = "X"
-    move(board, index, character)
-    display_board(board)
-  elsif valid_move?(board, index) && index % 2 == 1
-    character = "O"
+  if valid_move?(board, index)
+    character = current_player(board)
     move(board, index, character)
     display_board(board)
   else
     turn(board)
   end
 end
-#=end
 
 def turn_count(board)
     counter = 0
