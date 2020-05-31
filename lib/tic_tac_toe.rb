@@ -73,12 +73,8 @@ def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-  if valid_move?(board, index) && index % 2 == 0
-    character = "X"
-    move(board, index, character)
-    display_board(board)
-  elsif valid_move?(board, index) && index % 2 == 1
-    character = "O"
+  if valid_move?(board, index)
+    character = current_player(board)
     move(board, index, character)
     display_board(board)
   else
